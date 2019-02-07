@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://AdayXi.github.io">
-  <title>Archives | atx</title>
+  <title>jQuery | atx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="atx">
-<meta property="og:url" content="https://AdayXi.github.io/archives/index.html">
+  <meta name="description" content="[一] jQuery 版本1.X 兼容IE低版本 2.X 不兼容 3.X 不兼容 精简版 $(function(){ 仅仅等DOM树加载完毕后就会执行 })     写法2 $(document).ready(function(){   })">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery">
+<meta property="og:url" content="https://AdayXi.github.io/2019/02/07/jQuery/index.html">
 <meta property="og:site_name" content="atx">
+<meta property="og:description" content="[一] jQuery 版本1.X 兼容IE低版本 2.X 不兼容 3.X 不兼容 精简版 $(function(){ 仅仅等DOM树加载完毕后就会执行 })     写法2 $(document).ready(function(){   })">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-07T08:20:03.055Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="atx">
+<meta name="twitter:title" content="jQuery">
+<meta name="twitter:description" content="[一] jQuery 版本1.X 兼容IE低版本 2.X 不兼容 3.X 不兼容 精简版 $(function(){ 仅仅等DOM树加载完毕后就会执行 })     写法2 $(document).ready(function(){   })">
   
     <link rel="alternative" href="/atom.xml" title="atx" type="application/atom+xml">
   
@@ -150,184 +154,300 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-jQuery" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      jQuery
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/07/jQuery/" class="archive-article-date">
+
+        
+        <a href="/2019/02/07/jQuery/" class="archive-article-date">
   	<time datetime="2019-02-07T07:55:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-07</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/07/jQuery/">jQuery</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一-jQuery-版本"><a href="#一-jQuery-版本" class="headerlink" title="[一] jQuery 版本"></a>[一] jQuery 版本</h4><pre><code>1.X 兼容IE低版本
+2.X 不兼容
+3.X 不兼容 精简版
+$(function(){ 仅仅等DOM树加载完毕后就会执行 })
+    写法2 $(document).ready(function(){   })
+</code></pre><a id="more"></a>
+<h4 id="二-jQuery-对象获取和转换"><a href="#二-jQuery-对象获取和转换" class="headerlink" title="[二] jQuery 对象获取和转换"></a>[二] jQuery 对象获取和转换</h4><pre><code>1 获取jQuery对象   $(&apos;标签名&apos;)
+2 jQuery对象 转 DOM对象
+      给jQuery对象一个下标[0]
+3 DOM对象 转 jQuery对象
+      $()
+</code></pre><h4 id="三-jQuery-操作类名"><a href="#三-jQuery-操作类名" class="headerlink" title="[三] jQuery 操作类名"></a>[三] jQuery 操作类名</h4><pre><code>1.添加类名
+      jQuery对象.addClass(&apos;类名&apos;)
+2.移除类名
+      jQuery对象.removeClass(&apos;类名&apos;) 括号里不写东西,移除[所有]类名
+3.检测类名
+      jQuery对象.hasClass(&apos;类名&apos;)  返回[布尔值]
+4.类名切换
+      jQuery对象.toggleClass(&apos;类名&apos;)  若存在该类名,就[移除],若没有就[添加]
+</code></pre><h4 id="四-jQuery-选择器"><a href="#四-jQuery-选择器" class="headerlink" title="[四] jQuery 选择器"></a>[四] jQuery 选择器</h4><pre><code>filter(&apos;:checked&apos;) 属性选择器
+input[type=checkebox] 检测 input类型
+:eq(索引)获取某一个元素  .eq(索引)方法 [推荐使用]
+:odd  获取为基数的索引
+:even 获取为偶数的索引
+选择器筛选方法
+    children()  获取子元素 不写参数获取所有子元素
+    find()      获取所有后代元素 不写参数获取为0
+    siblings()  获取不包括他自己在内的所有兄弟元素
+    next()      获取下一个兄弟元素 nextAll()下边所有兄弟元素
+    prev()      获取上一个兄弟元素 prevAll()上边所有兄弟元素
+    parent()    获取父元素
+    parents()   传参可以选择 某一个父类元素
+</code></pre><h4 id="五-jQuery-操作-style-样式"><a href="#五-jQuery-操作-style-样式" class="headerlink" title="[五] jQuery 操作 style 样式"></a>[五] jQuery 操作 style 样式</h4><pre><code>1. 获取样式
+      jQuery对象.css(&apos;样式属性名&apos;) 返回值带单位
+2. 设置样式
+  设置单个
+    jQuery对象.css(&apos;name&apos;,&apos;value&apos;)
+  设置多个
+    jQuery对象.css({
+    name:&apos;value&apos;,
+    name:&apos;value&apos;
+    })
+3. 显示隐藏方法
+  show() 元素显示
+  hide() 元素隐藏
+  slideDown() 显示
+  slideUp() 隐藏
+4. 获取元素的索引值
+      index()方法
+</code></pre><h4 id="六-jQuery-操作样式属性"><a href="#六-jQuery-操作样式属性" class="headerlink" title="[六] jQuery 操作样式属性"></a>[六] jQuery 操作样式属性</h4><pre><code>设置标签的属性
+    jQuery对象.attr(name,value)
+获取标签属性值
+    jQuery对象.attr(name)
+移除标签的属性
+    jQuery对象.removeAttr(name)
+操作表单的属性
+    获取
+        jQuery对象.prop(&apos;checked&apos;)
+    设置
+        jQuery对象.prop(&apos;checked&apos;,&apos;false&apos;)
+操作标签的文本
+    jQuery对象.text()
+    jQuery对象.html()
+操作表单元素的内容
+    jQuery对象.val()
+</code></pre><h4 id="七-jQuery-动画"><a href="#七-jQuery-动画" class="headerlink" title="[七] jQuery 动画"></a>[七] jQuery 动画</h4><pre><code>基本动画
+    1. 缩放显示和隐藏,切换
+    显示 jQuery对象.show(speed,easing,fn())
+      speed 表示动画完成[时长]单位[毫秒]
+      easing 运动的方式 &apos;swing&apos;(缓冲)linear(匀速)
+      fn()动画完成之后执行的函数
+    隐藏 jQuery对象.hide(speed,easing,fn())
+    切换 jQuery对象.toggle(speed,easing,fn())
+    2. 上拉下拉显示和隐藏
+          显示 jQuery对象.slideDown(speed)
+          隐藏 jQuery对象.slideUp(speed)
+    3. 淡入淡出显示和隐藏
+    显示 jQuery对象.fadeIn()
+    隐藏 jQuery对象.fadeOut()
+自定义动画
+jQuery对象.animate({
+  样式属性名:目标值,
+  样式属性名:目标值
+},speed)
+停止动画
+    jQuery对象.stop(true,true)[一般不传参,使用默认值]
+第一个参数为[true,清空所有动画]或者[false,清除当前正在运动的动画],默认false
+第二个参数为[true,停止动画,直接到达目标]或者[false,停止动画,保持当前,不会运动到目标],默认为false
+</code></pre><h4 id="八-jQuery-动态操作元素"><a href="#八-jQuery-动态操作元素" class="headerlink" title="[八] jQuery 动态操作元素"></a>[八] jQuery 动态操作元素</h4><pre><code>1. jQuery创建元素
+  方式一 $(&apos;&lt;li&gt;&lt;/li&gt;&apos;)
+  方式二 .html()
+2. jQuery追加元素
+  向父元素最后追加
+    新的jQuery对象.appendTo(&apos;父元素选择器&apos;)
+    父元素jQuery对象.append(新的[jQuery对象]或者[标签])
+  向父元素最前添加
+    新的jQuery对象.prependTo(&apos;父元素选择器&apos;)
+    父元素jQuery对象.prepend(新的[jQuery对象]或者[标签])
+  向同元素之前或之后追加元素
+    jQuery对象.before(新元素)
+    jQuery对象.after(新元素)
+3. jQuery删除元素
+      jQuery对象.remove()
+4. jQuery清空元素
+jQuery对象.empty() 清空元素以及相关事件[推荐]
+jQuery对象.html(&apos;&apos;) 清空元素但不会释放相关处理程序
+5. 复制已有的元素
+      jQuery对象.clone(布尔值)默认为false  [true克隆事件]
+</code></pre><h4 id="九-jQuery-操作元素的尺寸位置"><a href="#九-jQuery-操作元素的尺寸位置" class="headerlink" title="[九] jQuery 操作元素的尺寸位置"></a>[九] jQuery 操作元素的尺寸位置</h4><pre><code>1. 操作元素尺寸宽高
+  jQuery对象.width()         只获取设置内容
+  jQuery对象.innerwidth()    获取设置内容+padding
+  jQuery对象.outerWidth()    获取设置内容+padding+border
+  jQuery对象.outerWidth(true)获取设置内容+padding+border+外边距
+2. 操作元素位置[返回对象]
+      jQuery对象.position() 获取的位置参照最近定位元素
+      jQuery对象.offset()   获取的位置参照文档[和定位没关系]
+3. 操作元素卷去的页面间距
+      jQuery对象.scrollTop(); 获取设置被卷去间距 返回数字
+      设置window scroll动画时,给html和body设置动画 [最好全写上,并集]
+</code></pre><h4 id="十-jQuery-事件"><a href="#十-jQuery-事件" class="headerlink" title="[十] jQuery 事件"></a>[十] jQuery 事件</h4><pre><code>1. jQuery注册事件
+方式一 $(&apos;标签名&apos;).事件名(事件处理程序)
+          事件名不加[on] this 是DOM对象 需要转jQuery对象 $(this)
+方式二 on方法注册事件[事件委托]
+        jQuery对象.on(&apos;click&apos;,&apos;子孙选择器&apos;,function(){})
+            选择器:子孙元素    this 代表当前点击的元素
+2. off方法移除事件
+  解绑简单事件 jQuery对象.off(&apos;事件&apos;,事件处理程序名字)
+  解绑事件委托注册的时间 jQuery对象.off(&apos;事件&apos;,&apos;选择器&apos;,&apos;事件处理程序&apos;)
+3. 触发事件
+      jQuery对象.trigger(&apos;事件名&apos;)
+4. 扩展bind和unbind方法
+      jQuery对象.bind(&apos;事件名&apos;,事件处理程序) 注册事件
+      jQuery对象.unbind(&apos;事件名&apos;,事件处理程序名字) 解绑事件
+5. 扩展delegate实现委托
+      jQuery对象.delegate(&apos;子孙选择器&apos;,&apos;事件类型&apos;,&apos;事件处理程序&apos;)
+6. jQuery对象.hover(&apos;移入执行函数&apos;,&apos;移出执行函数&apos;)
+</code></pre><h4 id="十一-jQuery-链式编程"><a href="#十一-jQuery-链式编程" class="headerlink" title="[十一] jQuery 链式编程"></a>[十一] jQuery 链式编程</h4><pre><code>获取不可以再继续链式编程 设置可以
+end()方法,返回当前jQuery对象的上一个对象
+</code></pre><h4 id="十二-jQueru-插件"><a href="#十二-jQueru-插件" class="headerlink" title="[十二] jQueru 插件"></a>[十二] jQueru 插件</h4><pre><code>插件
+    www.htmleaf.com
+    放大镜插件jQuery.zoom
+    http://www.xwcms.net/
+</code></pre><h4 id="十三-jQuery-多库共存问题"><a href="#十三-jQuery-多库共存问题" class="headerlink" title="[十三] jQuery 多库共存问题"></a>[十三] jQuery 多库共存问题</h4><pre><code>  释放$符号
+      通过 jQuery.noConflict()释放 用新变量接收
+如 var $1 = jQuery.noConflict()
+</code></pre>
+      
 
-        <div class="article-info info-on-right">
-          
-          
-
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://AdayXi.github.io/2019/02/07/jQuery/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/07/nodeJS/" class="archive-article-date">
-  	<time datetime="2019-02-07T02:25:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-07</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/07/nodeJS/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">nodeJS</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/07/nodeJS/">nodeJS</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/07/webAPI/" class="archive-article-date">
-  	<time datetime="2019-02-06T16:04:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/07/webAPI/">webAPI知识点汇总</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/07/js2/" class="archive-article-date">
-  	<time datetime="2019-02-06T16:03:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/07/js2/">js高级知识点汇总</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/06/js1/" class="archive-article-date">
-  	<time datetime="2019-02-06T15:49:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/06/js1/">js基础知识点汇总</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/03/postName/" class="archive-article-date">
-  	<time datetime="2019-02-03T14:36:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/03/postName/">我的 vscode 插件</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -350,8 +470,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
