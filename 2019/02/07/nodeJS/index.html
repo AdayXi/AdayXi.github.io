@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://AdayXi.github.io">
-  <title>Archives | atx</title>
+  <title>nodeJS | atx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="atx">
-<meta property="og:url" content="https://AdayXi.github.io/archives/index.html">
+  <meta name="description" content="【一】express 搭建服务器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodeJS">
+<meta property="og:url" content="https://AdayXi.github.io/2019/02/07/nodeJS/index.html">
 <meta property="og:site_name" content="atx">
+<meta property="og:description" content="【一】express 搭建服务器">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-07T02:50:19.123Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="atx">
+<meta name="twitter:title" content="nodeJS">
+<meta name="twitter:description" content="【一】express 搭建服务器">
   
     <link rel="alternative" href="/atom.xml" title="atx" type="application/atom+xml">
   
@@ -150,157 +154,497 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-nodeJS" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      nodeJS
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/07/nodeJS/" class="archive-article-date">
+
+        
+        <a href="/2019/02/07/nodeJS/" class="archive-article-date">
   	<time datetime="2019-02-07T02:25:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-07</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/07/nodeJS/">nodeJS</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="【一】express-搭建服务器"><a href="#【一】express-搭建服务器" class="headerlink" title="【一】express 搭建服务器"></a>【一】express 搭建服务器</h4><a id="more"></a>
+<pre><code>1 步骤
+    0 npm i express 下载 express 模块
+    1 const express = require(&apos;express&apos;)  加载 express 模块
+    2 const app = express()    创建express服务器
+    3 app.linsten(3000,()=&gt;{console.log(&apos;Express-Server is running&apos;)})   开启服务器
+    4 监听浏览器请求
+        get() 监听浏览器的get请求
+        post() 监听浏览器的post请求
+      app.get(&apos;/index.html&apos;,(req,res)=&gt;{})
+          参数一 url 地址
+    参数二 回调函数
+            res.send(&apos;登录页&apos;)  代替res.end()方法
+        app.get(&apos;*&apos;,(req,res)=&gt;{})  * 为任何地址
+    渲染模板文件
+      res.sendFile(1,2,3)
+  读取文件内容并返回给浏览器
+          1 绝对路径
+              可以使用相对路径与参数二进行配合使用
+          2 [可选] 配置项
+              {root:__dirname + &apos;/view&apos;}  可以使用变量接收
+              会和参数一合并 参数一写相对路径就可以了
+          3 回调函数
+              err 参数
+2 托管静态资源
+    app.use(&apos;/public&apos;,express.static(&apos;./public&apos;))
+        参数一 以public 开头的文件
+        参数二 去public目录下去找
+    app.use(express.static(&apos;./view&apos;))
+        一个参数 将 ./view 目录下的所有文件全部托管
+3 express中的template
+    0 npm i art-template express-art-template 下载
+    1 const template = require(&apos;express-art-template&apos;) 加载模块
+    2 app.engine(&apos;html&apos;,template) 配置模板引擎
+    3 res.render(1,2)
+        1) 文件路径 绝对路径
+        2) 分配到模板的数据 json形式 例：{list:dataArr}
+    2 3可以写到一起，写成一行
+4 body-parser
+    专门用来接收post方式传递的表单数据
+    npm i body-parser   下载模块
+    1 const bodyParser = require(&apos;body-parser&apos;) 加载模块
+    2 app.use(bp.urlencoded({extended:false})) 注册为中间件
+    req.body 监听获取表单数据
+</code></pre><h4 id="【二】NodeJS-常用命令"><a href="#【二】NodeJS-常用命令" class="headerlink" title="【二】NodeJS 常用命令"></a>【二】NodeJS 常用命令</h4><pre><code>node -v
+    查看 node版本
+node 文件名
+    运行文件
+cls
+    清屏
+cd ..
+    进入上一级目录
+cd 目录名
+    进入该目录下
+</code></pre><h4 id="【四】-系统模块"><a href="#【四】-系统模块" class="headerlink" title="【四】 系统模块"></a>【四】 系统模块</h4><pre><code>1 require 加载模块
+例：const os = require(&apos;os&apos;)
+  加载 os 模块
+os 系统模块
+  os.cpus()
+    查看cpu信息
+  os.userInfo()
+    查看用户信息
+2 fs 文件模块
+    1) fs.readFile(path,[option],callback) 读取文件
+        path 读取的文件路径
+        [option] 设置 utf-8 字符集
+        callback 读取完成时触发的回调函数(err,data)=&gt;{}
+            err  读取成功 为null 错误的时候打印err.message
+            data 未能读取为undefined
+    2) fs.writeFile() 写入文件
+3) fs.appendFile() 文件内容追加
+        文件路径 如果没有 则创建文件
+        写入文件的内容 字符串 （覆盖写入）
+        字符集 默认utf-8
+        回调函数 一个参数 err
+    4) fs.readdir(path,[option],callback) 获取目录列表
+        目录路径  不是文件路径
+        回调函数
+            err 错误对象
+            result 数据 数组形式
+    5) fs.stat(var1,var2)获取文件详细信息
+        var1 路径
+        var2 回调函数
+      err  错误对象
+      result 数据 对象形式
+        result.isFile() 判断是否为文件
+        result.isDirectory() 判断是否为目录
+3 path 模块
+  join()
+    构造文件地址
+    例:path.join(&apos;aaa&apos;, &apos;bbb&apos;, &apos;ccc&apos;)
+    例:path.join(__dirname, &apos;view&apos;, &apos;index.html&apos;)
+  sep属性
+    / 或 \
+  dirname()
+    获取文件路径 （不包含文件名）
+  basename()
+    获取文件名 （不包含目录路径）
+  extname()
+    获取文件后缀
+4 http 模块
+  使用http模块加载构造WEB服务器步骤
+    1 加载http模块
+        const http = require(&apos;http&apos;)
+    2 创建服务器实例
+        const server = http.creatServer()
+    3 开启服务器
+        server.listen(3000,()=&gt;{console.log(&apos;开启服务器&apos;)})
+          参数一 监听端口号 0-65536
+          参数二 回调函数,开启服务器成功
+    4 注册监听浏览器请求事件
+        server.on(&apos;request&apos;,(req,res)=&gt;{ })
+            参数一 事件类型，一般监听浏览器请求事件，所以固定是request
+            参数二 当浏览器请求之后出发的回调函数,有两个参数req和res
+req 和 res 对象
+  -req(request):请求对象
+    1)url
+      获取url端口号后边的地址  浏览器请求地址
+    2)method
+      请求方式， 最常见 POST 或者 GET
+    3)headers
+      请求头信息
+  -res(response):响应对象
+    1)write()
+      res.write(&apos;这是列表页&apos;)
+        设置响应体
+    2)writeHeader()
+      res.writeHeader(200,{
+        &apos;content-type&apos;:&apos;text/html;charset=utf-8&apos;
+      })  设置响应头
+        参数一 状态码
+        参数二 响应头(对象)
+    3)setHeader()
+      res.setHeader(&apos;content-type&apos;,&apos;text/html;charset=utf-8&apos;) 设置响应头
+    4)end()
+      res.end(&apos;Hello Nodejs&apos;)  向浏览器返回的数据
+      将响应行，响应头，响应体一次性返回给浏览器
+    5)redirect(&apos;路径&apos;) 页面跳转 重定向
+5 url 模块
+  拆解get方式提交的url地址
+  parse( )方法
+    拆解地址
+    url.parse(&apos;地址&apos;,true) 返回对象
+      参数一  要拆解的url地址
+      参数二 true || false
+        是否将get参数转换为对象
+    query
+      get参数
+    pathname
+      url地址  请求路径
+路径常量
+    __dirname
+        获取当前文件所处目录的绝对路径
+    __filename
+        获取当前文件的绝对路径
+js单线程和异步操作
+    js执行是单线程的 宿主环境是多线程(浏览器和node)
+</code></pre><h4 id="【五】npm-第三方包"><a href="#【五】npm-第三方包" class="headerlink" title="【五】npm 第三方包"></a>【五】npm 第三方包</h4><pre><code>npmjs.com  第三方模块网站
+npm init
+    npm init -y 快速初始化值
+npm i 模块
+    安装第三方模块
+        npm install(全称)
+    npm i jquery@1.11.1
+        使用@指定版本号
+工具软件全局安装
+    npm i 工具名  -g
+        使用 -g (global)参数来全局安装
+    C:\Users\Administrator（用户名）\AppData\Roaming\npm 安装在了此目录下
+    安装 nodemon
+        npm i nodemon -g
+        使用nodemon 启用服务器
+            解决每次修改服务器 需要重启的问题
+npm镜像网站
+    默认npm外文网站下载，有时下载缓慢，使用镜像网站解决下载缓慢问题
+    npm i nrm -g
+        使用 nrm 一次性设置多个镜像网站地址
+    nrm ls
+        查看已存在的镜像网站
+    nrm use name
+        切换默认下载的镜像网站 nrm use taobao 切换到淘宝下载
+</code></pre><h4 id="【六】第三方模块"><a href="#【六】第三方模块" class="headerlink" title="【六】第三方模块"></a>【六】第三方模块</h4><pre><code>art-template
+    ① npm install art-template   下载 art-template 引擎第三方模块
+    ② const template = require(&apos;art-template&apos;) 加载模板模块
+    ③ 使用template函数代替fs模块读取html模板文件，并分配数据到模板文件
+    ③ template（）
+        参数1    文件路径
+        参数2    要渲染的数据
+        返回值  已经渲染好数据的html字符串
+     ④ 模板上使用 {{}} 渲染数据
+mysql
+    npm i mysql 下载mysql 模块
+    1 加载模块
+        const mysql = require(&apos;mysql&apos;)
+    2 创建mysql连接对象
+        const conn = mysql.createConnection({ })
+            host:&apos;127.0.0.1&apos;
+            user:&apos;root&apos;
+            password:&apos;root&apos;
+            database:&apos;aaaa&apos; 表名
+    3链接mysql服务器
+        conn.connect()
+            此步骤可以省略
+    4 执行sql语句
+        conn.query(1,2,3)
+            1 要执行的sql语句
+            2 (可选)占位符数据
+                sql语句中的？
+                     多个使用数组形式 注意顺序
+                添加语句：使用对象形式，key是数据表字段名，value是要写入数据表的值
+                修改语句：要修改的数据使用对象形式，key是数据表字段名，value是要写入数据表的值
+                查询/删除语句：使用数组形式，几个？  数组中就有几个单元
+            3 回调函数(err,result)=&gt;{}
+                err
+                    错误对象
+                result
+                    增/删/改
+                        result是一个对象
+                        result.affectedRows
+                            判断受影响行数
+                        result.insertId
+                    查
+                        result是一个数组,内部是对象,对象的属性是数据表字段名
+    5 关闭链接
+        conn.end()
+</code></pre><h4 id="【七】node-中的模块化"><a href="#【七】node-中的模块化" class="headerlink" title="【七】node 中的模块化"></a>【七】node 中的模块化</h4><pre><code>全局作用域
+    global.name = &apos;xi&apos;
+        将属性和方法挂载在global上
+module.exports
+    使用module.exports = {name,age} 导出属性和方法
+exports
+    exports.goods = {} || exports.name = &apos;xi&apos;
+require 加载模块文件
+    const o = renquire(&apos;路径&apos;) 这样就可以使用模块中的属性和方法
+模块的加载机制
+    优先从缓存中加载模块
+模块自定义包
+    lib
+        核心文件存放目录，自己写的js模块文件
+    package.json {}
+        name 包名
+        version 版本号
+        main 入口文件地址
+        dependencies 依赖关系
+    自定义模块
+         node_modules
+            mycal
+                package.json
+                    使用main定义模块的入口文件
+                index.js
+                    定义好方法 并导出
+                    引入 lib 拆分的方法 并导出
+                    require(&apos;&apos;) 加载路径的时候同级目录最好写上 ./
+                lib
+                    从 index.js 拆分的方法 保存到此目录下
+            index.js
+                加载mycal包
+</code></pre><h4 id="【八】路由"><a href="#【八】路由" class="headerlink" title="【八】路由"></a>【八】路由</h4><pre><code>    router.js
+        监听并处理浏览器请求。其他：创建路由对象，导出路由模块
+        1 加载 express 模块
+         2 const router = express.Router()
+            创建路由对象
+        3 使用 router 监听浏览器请求
+        4 module.exports = router
+            导出 route  模块
+    app.js
+         创建并启动服务器，托管静态资源，注册中间件，加载路由模块并注册为中间件
+        1 加载     2 创建   3 开启服务器
+        4 加载路由模块 const router = require(&apos;./router.js&apos;)
+        5 将路由模块注册为中间件 app.use(router)
+中间件
+    const fn(res,req,next)=&gt;{ 中间函数内容; next()} 自定义中间件函数
+    app.use(fn)注册为中间件  中间件注册在路由之前
+    参数列表要有req.res.next 三个参数 最后还要调用next() 函数 进入下一个中间函数
+express接收数据
+    get
+        1  req.query   使用 query 接收 适用于传统地址参数
+            http://127.0.0.1:3000/index?id=10001&amp;name=zs
+        2  req.params 使用 params 接收 适用于类似右边的参数
+            http://127.0.0.1:3000/index/10/ls 和  /index/:id/:name
+    post
+        使用 body-parser 模块  req.body 接收
+    json返回数据
+        例：res.json({code:200}) 返回给前端数据
+ajax跨域请求
+    cors 跨域
+        npm i cors 1 下载模块   2 加载模块 const cors = require(&apos;cors&apos;)
+        3 配置项 并注册为中间件  app.use(cors({origin:&quot;http://127.0.0.1:3000&quot;}))
+            origin为可进行跨域的地址  如果不配置,则任何网站都可以进行请求
+        res.json({name:&quot;xi&quot;})  如果请求结果是json,则使用该方法返回数据
+会话控制
+    cookie：将数据持久化保存在（客户端）
+    session：将数据持久化保存在（服务器端）
+    cookie的设置
+        1 使用 setHeader 方法
+            res.setHeader(&apos;cookie&apos;, &apos;id=101&apos;)
+                设置单个cookie
+            res.setHeader(&apos;cookie&apos;, [&apos;id=101&apos;, &apos;name=zs&apos;]);
+                设置多个cookie
+        2 使用 writeHeader 方法
+            res.writeHeader(200, {
+&apos;set-cookie&apos;: [&apos;type=10&apos;, &apos;name=my&apos;]
+})； 200为状态码  [不能使用send方法 使用end]
+        3 使用 set 方法，该方法是express封装的方法
+            res.set({&apos;set-cookie&apos;:[&apos;Name=xi&apos;, &apos;Price=8888&apos;]})；
+        4 设置cookie时，指定有效期
+使用 expires=时间
+            注意：要使用UTC时间
+                例:设置有效期为 1小时    3600000 为毫秒
+            const expiresTime = new Date(Date.now() + 3600000).toUTCString();
+            res.set({&apos;set-cookie&apos;:[&apos;Name=xiaomi 6;expires=&apos;+expiresTime, Price=8888&apos;]})
+    cookie的获取
+        req.headers.cookie 获取cookie信息  字符串形式
+        const qs = reqire(&apos;querystring&apos;) 系统模块加载
+            调用 parse 方法进行转换 拆解类似 get传参的字符串
+        qs.parse(1,2,3)
+            例：const obj = qs.parse(req.headers.cookie, &apos;;&apos;, &apos;=&apos;);
+            1 要拆解的字符串
+            2 第一次要拆解的标识字符
+            3  第二次要拆解的标识字符
+            返回值 ： 结果对象   如：{name:xi, price:8888}
+    session
+        设置
+             1 const session = require(&apos;express-session&apos;)  下载 并 加载express-session模块
+            2 app.use(session({})) 配置项 并注册为中间件
+                secret: &apos;4ey32erfyf3fgpg&apos;,  加密字符串。 使用该字符串来加密session数据，自定义
+                resave:false
+                saveUninitialized:false
+            3 使用 req.session.属性 = 值  方式来设置session
+                例：req.session.name = &apos;xi&apos;
+            4 res.send(&apos;set session&apos;) 返回给浏览器 括号里不写东西也可以
+        读取
+            req.session  是一个对象
+                req.session.name  读取到具体某一个值
+        清除
+            req.session.destroy() 需要send发送一下
+                res.send(&apos;清除session&apos;)
+</code></pre><h4 id="【九】扩展模块"><a href="#【九】扩展模块" class="headerlink" title="【九】扩展模块"></a>【九】扩展模块</h4><pre><code>moment 时间模块
+    moment().format(&apos;YYYY-MM-DD HH:mm:ss&apos;)
+        将当前时间转为 所需的字符串格式
+    moment(3600000).format(&apos;YYYY-MM-DD HH:mm:ss&apos;)
+        将指定的时间戳转为时间格式
+</code></pre>
+      
 
-        <div class="article-info info-on-right">
-          
-          
-
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://AdayXi.github.io/2019/02/07/nodeJS/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/07/webAPI/" class="archive-article-date">
-  	<time datetime="2019-02-06T16:04:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-07</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/07/webAPI/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">webAPI知识点汇总</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/07/webAPI/">webAPI知识点汇总</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/07/js2/" class="archive-article-date">
-  	<time datetime="2019-02-06T16:03:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/07/js2/">js高级知识点汇总</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/06/js1/" class="archive-article-date">
-  	<time datetime="2019-02-06T15:49:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/06/js1/">js基础知识点汇总</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/03/postName/" class="archive-article-date">
-  	<time datetime="2019-02-03T14:36:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/03/postName/">我的 vscode 插件</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -323,8 +667,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
