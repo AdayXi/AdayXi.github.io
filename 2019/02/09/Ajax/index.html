@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://AdayXi.github.io">
-  <title>Archives: 2019/2 | atx</title>
+  <title>Ajax | atx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="atx">
-<meta property="og:url" content="https://AdayXi.github.io/archives/2019/02/index.html">
+  <meta name="description" content="【一】Ajax 同步异步单线程和多线程js 是单线程的语言从 h5 时代开始引入多线程概念, 但是还是由主线程进行控制并进行核心操作同步任务和异步任务同步：按照顺序一个一个执行, 如果某个任务耗时, 后续任务等待异步：某些任务较为耗时或执行时间不确定, 就会成为异步任务结构常见的异步任务：定时器, 事件, Ajax,异步特点：执行时机一定晚于同步任务">
+<meta name="keywords" content="Ajax">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ajax">
+<meta property="og:url" content="https://AdayXi.github.io/2019/02/09/Ajax/index.html">
 <meta property="og:site_name" content="atx">
+<meta property="og:description" content="【一】Ajax 同步异步单线程和多线程js 是单线程的语言从 h5 时代开始引入多线程概念, 但是还是由主线程进行控制并进行核心操作同步任务和异步任务同步：按照顺序一个一个执行, 如果某个任务耗时, 后续任务等待异步：某些任务较为耗时或执行时间不确定, 就会成为异步任务结构常见的异步任务：定时器, 事件, Ajax,异步特点：执行时机一定晚于同步任务">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-09T13:34:37.023Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="atx">
+<meta name="twitter:title" content="Ajax">
+<meta name="twitter:description" content="【一】Ajax 同步异步单线程和多线程js 是单线程的语言从 h5 时代开始引入多线程概念, 但是还是由主线程进行控制并进行核心操作同步任务和异步任务同步：按照顺序一个一个执行, 如果某个任务耗时, 后续任务等待异步：某些任务较为耗时或执行时间不确定, 就会成为异步任务结构常见的异步任务：定时器, 事件, Ajax,异步特点：执行时机一定晚于同步任务">
   
     <link rel="alternative" href="/atom.xml" title="atx" type="application/atom+xml">
   
@@ -150,36 +155,336 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Ajax" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/09/Ajax/" class="archive-article-date">
-  	<time datetime="2019-02-09T12:32:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-09</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/09/Ajax/">Ajax</a>
+    <h1 class="article-title" itemprop="name">
+      Ajax
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/02/09/Ajax/" class="archive-article-date">
+  	<time datetime="2019-02-09T12:32:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="【一】Ajax"><a href="#【一】Ajax" class="headerlink" title="【一】Ajax"></a>【一】Ajax</h4><blockquote>
+<p>同步异步<br>单线程和多线程<br>js 是单线程的语言<br>从 h5 时代开始引入多线程概念, 但是还是由主线程进行控制并进行核心操作<br>同步任务和异步任务<br>同步：按照顺序一个一个执行, 如果某个任务耗时, 后续任务等待<br>异步：某些任务较为耗时或执行时间不确定, 就会成为异步任务结构<br>常见的异步任务：定时器, 事件, Ajax,<br>异步特点：执行时机一定晚于同步任务</p>
+</blockquote>
+<a id="more"></a>
+<h4 id="【二】Ajax-基本操作之发送请求"><a href="#【二】Ajax-基本操作之发送请求" class="headerlink" title="【二】Ajax 基本操作之发送请求"></a>【二】Ajax 基本操作之发送请求</h4><pre><code>在js中是使用内置对象实现的, 构造函数名称为 XMLHttpRequest()
+1, 创建ajax实例 var xhr = new XMLHttpRequest()
+2, 调用open方法, 建立与服务的连接
+    xhr.open(&apos;GET&apos;, &apos;路径&apos;)
+      参数一：请求方式GET或者POST, 字符串类型
+      参数二：请求路径, URL, 字符串类型
+3, 调用send方法, 将请求进行发送
+    xhr.send(null)
+      send的参数用于设置请求体的内容,
+      如果使用GET, 推荐设置null(不写也可以使用)
+4, POST发送注意
+    1)如果使用post方式发送请求, 需要在send中进行请求体内容的设置
+        设置的数据需要为urlencoded形式 ：id=10&amp;name=jack&amp;age=20
+        使用urlencoded, 每次书写很不方便, 可以进行统一处理
+          var arr = [];
+          for (var k in data) {
+            arr.push(k + &apos;=&apos; + data[k]);
+          }
+          data = arr.join(&apos;&amp;&apos;);
+    2)还需要在请求头中设置请求体的内容类型(Content-Type属性)
+      xhr.setRequestHeader(&apos;content-Type&apos;,&apos;application/x-www-from-urlencoded&apos;)
+        设置请求头需要使用 xhr.setRequestHeader()
+        参数一：请求头名称 Content-Type
+        参数二：要给请求头设置的值
+
+发送GET请求
+  1, var xhr = new XMLHttpRequest()
+  2, xhr.open(&apos;GET&apos;,&apos;./ajax.php&apos;)
+  3, xhr.send(null)
+
+发送POST请求
+  1, var xhr = new XMLHttpRequest()
+  2, xhr.open(&apos;POST&apos;,&apos;./ajax.php&apos;)
+  3, xhr.setRequestHeader(&apos;content-Type&apos;,&apos;application/x-www-from-urlencoded&apos;)
+  4, xhr.send(&apos;id=10&amp;name=jack&amp;age=20&apos;)
+</code></pre><h4 id="【四】Ajax-基本操作之响应接受数据"><a href="#【四】Ajax-基本操作之响应接受数据" class="headerlink" title="【四】Ajax 基本操作之响应接受数据"></a>【四】Ajax 基本操作之响应接受数据</h4><pre><code>1, 通过 xhr.onreadystatechange   事件检测
+    xhr.onreadystatechange = function({ })
+2, 在事件里边判断是否成功 if (xhr.readyState === 4 &amp;&amp; xhr.status === 200) {}
+3, 响应体的内容具有多种形式
+    1, 普通文本
+    2, json格式
+        需要在PHP设置响应体内容类型为json类型 后台做的事
+          1, 标准形式 header(&apos;Content-Type:application/json&apos;)
+          2, 非标准的形式 text/json
+4, getResponseHeader(&apos;Content-Type&apos;) 检测请求体内容类型
+    this.getResponseHeader(&apos;Content-Type&apos;).indexOf(&apos;json&apos;) !== -1   判断是否属于json格式
+5, 需要把json的字符串转换为js对象格式
+    JSON.parse(this.responseText) 转换为js对象格式
+
+常用接收
+      xhr.readyState 接收响应体情况   xhr.readyState===4
+      xhr.status 状态码   xhr.status===200
+      xhr.statusText 状态文本
+响应头信息的接收
+  xhr.getAllResponseHeaders()
+  xhr.getResponseHeader(&apos;Content-Type&apos;)  //常用功能
+响应体内容的接收
+  xhr.responseText
+readyState每个值的含义
+  0, 初始化, 创建了xhr的实例对象
+  1, 建立连接, 调用open()
+  2, 请求已经被发送, 调用send()后
+  3, 下载中, 可以使用响应头的所有信息, 但是响应体可能还没下载完毕
+  4, 下载完毕, 可以使用响应体的内容了, 只有在4的时候才能进行各种操作
+常用状态码
+  404 没找到页面(not found)
+  403 禁止访问(forbidden)
+  500 内部服务器出错(internal service error)
+  200 一切正常(ok)
+  304 没有被修改(not modified)(服务器返回304状态, 表示源文件没有被修改 )
+</code></pre><h4 id="【五】ajax-小功能"><a href="#【五】ajax-小功能" class="headerlink" title="【五】ajax 小功能"></a>【五】ajax 小功能</h4><pre><code>1 三级联动
+    onchange表单事件
+      当选框内内容改变且失去焦点时 触发该事件
+2 ajax同步
+    open方法
+      open方法参数三用于设置本ajax请求采用同步或者异步
+        默认为true 异步   可以设置false为同步操作
+        如果采用同步操作, send()会进行同步操作, 后续操作进行等待
+        可以在send() 后直接接受响应体内容, 无需使用事件接受
+    缺点
+      后续操作被阻塞, 几乎不使用
+3 form表单方法
+    1, serialize()方法 常用
+      可以将一个表单的数据转换为urlencode形式的数据  还可以直接作为$.ajax的参数使用  data ： $(&apos;#form&apos;).serialize()
+    2, serializeArray()方法  如果需要查数据内容 使用此方法
+      可以将一个表单的数据转换为数组形式
+</code></pre><h4 id="【六】ajax-封装"><a href="#【六】ajax-封装" class="headerlink" title="【六】ajax 封装"></a>【六】ajax 封装</h4><pre><code>函数参数有可选参数和必选参数
+可选参数的放置位置应当为参数列表的最后位置, 适用于只有单个可选参数的情况
+将函数的参数列表设置为对象结构可解决上述问题
+回调函数
+  一个函数中的某段代码功能不确定时, 使用回调函数
+  需要将函数作为载体, 保存代码功能 , 传入到函数中进行调用
+  在实参中传入函数体结构, 形参接收后, 在函数内的指定位置进行调用
+  短路操作 fn &amp;&amp; fn()    遇假即假 遇真则往后执行
+具体实现
+  /*
+    这个函数用于进行ajax请求发送和响应处理
+    为了让参数使用更加简便，可以设置为options的对象传入方式：
+    options: ajax请求的配置信息，以下为支持的属性列表
+      - method：    请求方式
+      - url:        请求地址
+      - data:       请求参数
+      - success:    处理成功操作的回调函数
+      - error:      处理失败操作的回调函数
+  */
+  function ajax (options) {
+    // 通过局部变量保存options中的属性，同时进行默认值的设置
+    var method = (options.method || &apos;GET&apos;).toUpperCase(); //设置默认请求方式为GET，同时考虑大小写的比较问题
+    var data = options.data || {}; // 如果没有传入数据，默认设置为空对象
+    var url = options.url; // 必选参数
+    var success = options.success; // 后续操作中已经进行了检测
+    var error = options.error; // 后续操作中已经进行了检测
+
+    // 1 对请求参数进行处理：转换为urlencoded形式
+    var arr = [];
+    for (var k in data) {
+      arr.push(k + &apos;=&apos; + data[k]);
+    }
+    data = arr.join(&apos;&amp;&apos;);
+
+    // 2 进行请求发送的处理操作
+    var xhr = new XMLHttpRequest();
+    //  - 根据请求方式，设置url位置的传入形式
+    xhr.open(method, method === &apos;GET&apos; ? url + &apos;?&apos; + data : url);
+    //  - 根据请求方式，检测是否设置请求头的Content-Type信息
+    if (method === &apos;POST&apos;) {
+      xhr.setRequestHeader(&apos;Content-Type&apos;, &apos;application/x-www-form-urlencoded&apos;);
+    }
+    //  - 根据请求方式，设置send的参数形式
+    xhr.send(method === &apos;GET&apos; ? null : data);
+
+    // 3 后续进行响应处理操作
+    xhr.onreadystatechange = function () {
+      // 3.1 检测响应状态
+      if (this.readyState === 4) {
+        // 3.2 进行请求的状态码检测
+        if (this.status === 200 || this.status === 302) {
+          // 请求成功时的处理操作
+          // 3.3 检测响应体内容类型
+          //  - 当响应体接收完毕，用户可以根据当前使用场景进行具体操作，例如，生成表格，生成列表
+          //        - 满足了回调函数的使用场景
+          //    - 可以使用回调函数
+          if (this.getResponseHeader(&apos;Content-Type&apos;).indexOf(&apos;json&apos;) !== -1) {
+            // 响应体为JSON结构
+            // console.log(JSON.parse(this.responseText));
+            /*function success (datas) {
+              console.log(&apos;这是接收的响应体内容:&apos;, datas);
+            }*/
+            success &amp;&amp; success(JSON.parse(this.responseText));
+          } else {
+            // 响应体为普通文本
+            // console.log(this.responseText);
+            success &amp;&amp; success(this.responseText);
+          }
+        } else {
+          // 请求失败时的处理操作
+          // console.log(&apos;网络开小差了，请稍后再试&apos;);
+          error &amp;&amp; error();
+        }
+      }
+    };
+  }
+</code></pre><h4 id="【七】jquery-使用-ajax"><a href="#【七】jquery-使用-ajax" class="headerlink" title="【七】jquery 使用 ajax"></a>【七】jquery 使用 ajax</h4><pre><code>$.ajax({ })基本属性
+    1, method,type    请求方式, 默认GET请求方式
+    2, url            请求地址  必填
+    3, data           请求参数对象
+    4, success(datas) 成功的处理函数 datas
+    5, error          错误的处理函数
+    6, beforeSend     请求发送前的处理函数
+    7, complete       响应完成后的操作函数
+    8, dataType       设置客户端(期望)的响应体的内容类型 标识符形式 例：&apos;json&apos;
+    9, contentType    设置请求体的内容类型  post有效 默认为html 字符串
+    10, timeout       设置请求超时时间 单位毫秒 数值
+      10.1, sleep()     php方法 让程序暂停一段时间后在执行, 单位为秒 括号里写时间
+    11, jsonpCallback:&apos;&apos;  规定回调函数名称
+
+jquery 跨域
+  设置dataType : &apos;jsonp&apos;   与dataType原始功能无关
+$.get({ })支持跨域
+  一 url   二 data   三 success  四 dataType 可以跨域
+$.post({ })支持跨域
+  一 url   二 data   三 success  四 dataType 可以跨域
+$.getJSON({})
+    参数一：url?callback=?   参数二：datas   也可以进行跨域请求发送
+      url 后 加上 ?callback=?  进行跨域
+</code></pre><h4 id="【八】ajax-跨域操作"><a href="#【八】ajax-跨域操作" class="headerlink" title="【八】ajax 跨域操作"></a>【八】ajax 跨域操作</h4><pre><code>1, 同源地址
+    任意两个地址中的协议, 域名, 端口相同, 称这两个地址为同源地址
+2, 同源策略
+    是浏览器的一种基本安全策略, 不允许对非同源的地址进行 ajax请求
+    限制的方式：可以发请求, 服务端也会进行响应, 但是响应返回到客户端被浏览器阻止了
+3, 跨域 3种方式
+  第一种 JSONP 跨域操作
+      只能发送GET请求
+      不是标准制定的跨域手段, 所有浏览器支持
+    a, 利用script发送跨域请求 客户端
+        script src=&apos;http:/location/xi.php?callback=fn&apos;
+          2, 服务端需要响应函数调用形式的字符串,  例如 &quot;$callback()&quot;
+              $callback = $_GET[&apos;callback&apos;]
+                2.1 为了确保服务端与客户端使用同样的函数名称
+                      -客户端应当在请求时将处理函数的名称作为参数传递
+                      -参数传递时, 参数的名称通常为callback
+          3, 服务端将需要传递的数据拼接到函数调用的内部, 数据为通常JSON格式
+              例如 echo &quot;$callback($json)&quot;
+    b, 客户端需要提前准备一个用于对响应进行处理的函数(名字需要一致)
+      fn(datas)  括号里的参数用来接收数据
+  第二种 CORS 跨域操作
+    官方制定, IE10以上支持 CORS (cross origin resource sharing) 跨域资源共享
+      在服务端设置响应头信息 header()  操作如下 3种情况
+      1) header(&apos;Access-Control-Allow-Origin:*&apos;); 星表示所有页面均可请求
+    2) $arr = [&apos;http://127.0.0.1&apos;, &apos;http://www.phplearn.net&apos;];
+        in_array()用于检测一个值在数组中是否存在
+          参数1是元素值, 参数2是数组, 返回布尔值
+        if (in_array($_SERVER[&apos;HTTP_ORIGIN&apos;], $arr)) {
+          header(&apos;Access-Control-Allow-Origin:&apos; . $_SERVER[&apos;HTTP_ORIGIN&apos;]);
+        }
+      3) header(&apos;Access-Control-Allow-Origin:http://www.phplearn.net&apos;);
+        允许指定的地址对当前页面进行请求 只能设置一遍 设置多变会覆盖
+          可以通过$_SERVER[&apos;HTTP_ORIGIN&apos;]获取本次请求的源地址, 从而进行判断
+          // - 这个属性只能在跨域请求中进行访问
+  第三种 服务端代理跨域
+    1) 让一个同源的服务端页面(1)对一个非同源服务端页面(2)发送请求。
+    2) 客户端请求同源的服务端页面(1)
+    3) 同源的服务端页面(1)对客户端页面响应数据 (数据是从非同源服务端页面(2)中获取的)
+        php中这个函数不仅可以访问本地资源文件, 还可以对一个网络地址进行请求发送
+        $content = file_get_contents(&apos;http://localhost/Ajax_day4/demo4.php&apos;);
+        echo $content;
+      发送请求的方式和属性
+            link标签的href属性
+            script标签的src属性
+            img标签的src属性
+            ajax发送请求
+            表单提交发送请求
+            a标签的href发送请求
+            iframe的src属性发送请求
+</code></pre><h4 id="【九】接口和数据接口"><a href="#【九】接口和数据接口" class="headerlink" title="【九】接口和数据接口"></a>【九】接口和数据接口</h4><pre><code>数据接口
+  形式：url  从url响应数据信息
+  常见的数据接口  1, 自己编写的接口 2, 第三方数据接口
+但三方接口
+  www.juhe.cn 其他网站用于给其他用户提供数据的一个url
+  如 天气查询
+    1, 请求城市信息
+    2, 点击按钮查询对应城市天气
+    3, 根据信息生成结构
+$.ajax第三方接口使用
+  $.ajax({
+    url：接口地址, //必选参数
+    data：{key：key值}, //用户身份的象征
+    success：function(datas){},
+    dataType：&apos;jsonp&apos;
+  })
+</code></pre><h4 id="【十】XHR2"><a href="#【十】XHR2" class="headerlink" title="【十】XHR2"></a>【十】XHR2</h4><pre><code>1, onload事件：相当于 readyState 为4时的触发事件
+  仅仅响应接受完毕, 无法自动判断成功还是失败, 需要自行检测
+2, xhr.timeout = 3000;   设置超时 时间
+  xhr.ontimeout 事件  当操作超时 触发该事件 onload不会触发了
+3, 对表单数据进行处理
+    new FormData 构造函数 只能以post形式发送 直接放到send发送  var data = new FormData(formDOM对象)把data放到send发送
+  3.1, 上边构造函数的方法 data.append(&apos;name&apos;, &apos;xi&apos;) 额外发送除表单外的数据
+  3.2, multiple 文件域属性 不需要设置值  可以选择多个文件
+        设置在input标签中 需要在name的名字后加个[]中括号
+4, xhr.upload 上传操作  进度监测  xhr.onloadstart下载中 onloadend结束事件
+    4.1, onprogress 事件 检测上传进度在send前写 xhr.upload.onprogress 事件
+    4.2, 事件对象
+          e.loaded  表示已上传大小     可以显示上传百分比
+          e.total   表示上传文件的总大小  进度条案例
+  toFixed()保留小数点几位
+
+------------jquery发送FormData数据----
+两个必须属性
+  在$.ajax({})里
+    contentType：false 不指定请求体内容类型
+    processData：false 不进行数据处理操作
+GET的缓存问题
+post 没有缓存问题
+  可以添加无意义的实际参数 来解决缓存问题 data{  _ ：+new Date()}
+mdn网站
+onerror事件
+  加载错误触发该事件
+</code></pre>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,7 +496,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -204,201 +509,117 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://AdayXi.github.io/2019/02/09/Ajax/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/07/jQuery/" class="archive-article-date">
-  	<time datetime="2019-02-07T07:55:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-07</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/07/jQuery/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">jQuery</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/07/jQuery/">jQuery</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#【一】Ajax"><span class="toc-number">1.</span> <span class="toc-text">【一】Ajax</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【二】Ajax-基本操作之发送请求"><span class="toc-number">2.</span> <span class="toc-text">【二】Ajax 基本操作之发送请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【四】Ajax-基本操作之响应接受数据"><span class="toc-number">3.</span> <span class="toc-text">【四】Ajax 基本操作之响应接受数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【五】ajax-小功能"><span class="toc-number">4.</span> <span class="toc-text">【五】ajax 小功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【六】ajax-封装"><span class="toc-number">5.</span> <span class="toc-text">【六】ajax 封装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【七】jquery-使用-ajax"><span class="toc-number">6.</span> <span class="toc-text">【七】jquery 使用 ajax</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【八】ajax-跨域操作"><span class="toc-number">7.</span> <span class="toc-text">【八】ajax 跨域操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【九】接口和数据接口"><span class="toc-number">8.</span> <span class="toc-text">【九】接口和数据接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【十】XHR2"><span class="toc-number">9.</span> <span class="toc-text">【十】XHR2</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-posts">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/07/nodeJS/" class="archive-article-date">
-  	<time datetime="2019-02-07T02:25:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/07/nodeJS/">nodeJS</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">node.js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/07/webAPI/" class="archive-article-date">
-  	<time datetime="2019-02-06T16:04:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-07</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/07/webAPI/">webAPI知识点汇总</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/07/js2/" class="archive-article-date">
-  	<time datetime="2019-02-06T16:03:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/07/js2/">js高级知识点汇总</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/06/js1/" class="archive-article-date">
-  	<time datetime="2019-02-06T15:49:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/06/js1/">js基础知识点汇总</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/03/postName/" class="archive-article-date">
-  	<time datetime="2019-02-03T14:36:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/03/postName/">我的 vscode 插件</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -421,8 +642,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
