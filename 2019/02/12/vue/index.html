@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://AdayXi.github.io">
-  <title>vue | atx</title>
+  <title>vue基础概念 | atx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="vue">
+  <meta name="description" content="混合开发和前后端分离 混合开发(服务器端渲染)前后端分离 -后端提供接口，前端开发界面效果(专注于用户的交互)">
+<meta name="keywords" content="vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue基础概念">
 <meta property="og:url" content="https://AdayXi.github.io/2019/02/12/vue/index.html">
 <meta property="og:site_name" content="atx">
+<meta property="og:description" content="混合开发和前后端分离 混合开发(服务器端渲染)前后端分离 -后端提供接口，前端开发界面效果(专注于用户的交互)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-12T00:53:32.048Z">
+<meta property="og:updated_time" content="2019-02-12T03:22:31.611Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue">
+<meta name="twitter:title" content="vue基础概念">
+<meta name="twitter:description" content="混合开发和前后端分离 混合开发(服务器端渲染)前后端分离 -后端提供接口，前端开发界面效果(专注于用户的交互)">
   
     <link rel="alternative" href="/atom.xml" title="atx" type="application/atom+xml">
   
@@ -158,7 +162,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      vue
+      vue基础概念
     </h1>
   
 
@@ -171,7 +175,80 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h4 id="混合开发和前后端分离"><a href="#混合开发和前后端分离" class="headerlink" title="混合开发和前后端分离"></a>混合开发和前后端分离</h4><blockquote>
+<p>混合开发(服务器端渲染)<br>前后端分离 -后端提供接口，前端开发界面效果(专注于用户的交互)</p>
+</blockquote>
+<a id="more"></a>
+<h4 id="什么是-Vue"><a href="#什么是-Vue" class="headerlink" title="什么是 Vue"></a>什么是 Vue</h4><pre><code>1 一款非常优秀的前端 JavaScript 框架，由尤雨溪创建开发
+2 可以轻松构建单页 (SPA) 应用程序
+3 通过 指令 扩展了 HTML，通过 表达式 绑定数据到 HTML
+4 最大程度上解放了 DOM 操作
+5 它能让你更加的享受编程的乐趣
+6 数据驱动，开源
+</code></pre><h4 id="Vue-的特点"><a href="#Vue-的特点" class="headerlink" title="Vue 的特点"></a>Vue 的特点</h4><pre><code>1 - (数据特点)双向数据绑定
+2 - (语法特点)通过 指令 扩展了 HTML，通过 表达式 绑定数据到 HTML
+3 - (应用特点)单页web项目(简称：spa，全称：SinglePageApplication，如：worktile官网)
+4 - 可复用组件
+</code></pre><h4 id="学习-vue-的好处"><a href="#学习-vue-的好处" class="headerlink" title="学习 vue 的好处"></a>学习 vue 的好处</h4><pre><code>开发模式分类：
+  1 混合式开发
+    - 没有前端，只有后端，使用 MVC 思想
+  2 前后端分离
+    a 前端实现了工程化，引入了MVC思想
+      - （弊端）前端大量的 dom 操作，代码冗余
+      - （弊端）渲染大量的 dom，性能不佳
+      - （弊端）model 中数据变化时，要更新 view，用户操作view 时，要更新view 和 model，代码繁琐
+    b MVVM思想：
+      - 完美的解决了以上三大问题
+      - 重要特点：双向数据绑定
+Vue.js 是一个 MVVM 的框架
+</code></pre><h4 id="Vue-js-的三种安装方式"><a href="#Vue-js-的三种安装方式" class="headerlink" title="Vue.js 的三种安装方式"></a>Vue.js 的三种安装方式</h4><pre><code>1 直接下载源码然后通过路径引入
+  - 开发版本：https://vuejs.org/js/vue.js
+  - 生产版本：https://vuejs.org/js/vue.min.js
+2 使用 CDN
+  - &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js&quot;&gt;&lt;/script&gt;
+3 使用 npm 下载（默认安装最新稳定版) 然后通过路径引入
+  - npm init -y
+  - npm i vue
+</code></pre><h4 id="使用-ref-操作-dom-元素"><a href="#使用-ref-操作-dom-元素" class="headerlink" title="使用 ref 操作 dom 元素"></a>使用 ref 操作 dom 元素</h4><pre><code>步骤
+  1 给要操作的 dom 元素设置 ref 属性
+      &lt;p ref=&quot;txt&quot;&gt;内容&lt;/p&gt;
+  2 在方法中通过 this.$refs.属性名 来得到 dom 元素
+      new Vue({
+        methods: {
+          myFn: function() {
+              console.log(this.$refs.txt);
+          }
+        }
+      })
+</code></pre><h4 id="组件以及传参"><a href="#组件以及传参" class="headerlink" title="组件以及传参"></a>组件以及传参</h4><pre><code>特点
+  1 组件是一种封装, 组件能够让我们复用已有的html、css、js
+  2 可复用
+  3 每个组件模板有且只有一个根元素
+
+一 父组件给子组件传参
+    可以通过 v-bind 来将传递动态参数
+    步骤
+      1 在父组件中的 data 属性中定义数据
+          new Vue({
+            data: {
+              index: 2000
+            }
+          })
+      2 传递给子组件
+          &lt;count-com v-bind:num=&quot;index&quot;&gt;&lt;/count-com&gt;
+      3 在子组件中接收
+          Vue.component(&apos;countCom&apos;, {
+            template: `&lt;div&gt;
+              &lt;span&gt;这里显示数字&lt;/span&gt;&lt;br/&gt;
+            &lt;/div&gt;`,
+            props: [&apos;num&apos;]
+          })
+      4 在子组件中使用
+          template: `&lt;div&gt;
+            &lt;span&gt;{{ num }}&lt;/span&gt;&lt;br/&gt;
+          &lt;/div&gt;`,
+二 子组件传参给父组件
+</code></pre><h4 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h4>
       
 
       
@@ -200,7 +277,29 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -293,7 +392,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#混合开发和前后端分离"><span class="toc-number">1.</span> <span class="toc-text">混合开发和前后端分离</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是-Vue"><span class="toc-number">2.</span> <span class="toc-text">什么是 Vue</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Vue-的特点"><span class="toc-number">3.</span> <span class="toc-text">Vue 的特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#学习-vue-的好处"><span class="toc-number">4.</span> <span class="toc-text">学习 vue 的好处</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Vue-js-的三种安装方式"><span class="toc-number">5.</span> <span class="toc-text">Vue.js 的三种安装方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用-ref-操作-dom-元素"><span class="toc-number">6.</span> <span class="toc-text">使用 ref 操作 dom 元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#组件以及传参"><span class="toc-number">7.</span> <span class="toc-text">组件以及传参</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#路由"><span class="toc-number">8.</span> <span class="toc-text">路由</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -405,11 +504,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Ajax</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">node.js</a>
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
             
             <div class="clearfix"></div>
