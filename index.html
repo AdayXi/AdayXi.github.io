@@ -152,6 +152,68 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-vue" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/12/vue/">vue</a>
+    </h1>
+  
+
+        
+        <a href="/2019/02/12/vue/" class="archive-article-date">
+  	<time datetime="2019-02-12T00:51:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/12/vue/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Ajax" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -173,8 +235,17 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="【一】Ajax"><a href="#【一】Ajax" class="headerlink" title="【一】Ajax"></a>【一】Ajax</h4><blockquote>
-<p>同步异步<br>单线程和多线程<br>js 是单线程的语言<br>从 h5 时代开始引入多线程概念, 但是还是由主线程进行控制并进行核心操作<br>同步任务和异步任务<br>同步：按照顺序一个一个执行, 如果某个任务耗时, 后续任务等待<br>异步：某些任务较为耗时或执行时间不确定, 就会成为异步任务结构<br>常见的异步任务：定时器, 事件, Ajax,<br>异步特点：执行时机一定晚于同步任务</p>
+<p>同步异步</p>
 </blockquote>
+<pre><code>单线程和多线程
+    js 是单线程的语言
+    从 h5 时代开始引入多线程概念, 但是还是由主线程进行控制并进行核心操作
+同步任务和异步任务
+    同步：按照顺序一个一个执行, 如果某个任务耗时, 后续任务等待
+    异步：某些任务较为耗时或执行时间不确定, 就会成为异步任务结构
+    常见的异步任务：定时器, 事件, Ajax,
+    异步特点：执行时机一定晚于同步任务
+</code></pre>
         
           <a class="article-more-a" href="/2019/02/09/Ajax/#more">more >></a>
         
@@ -331,7 +402,13 @@ $(function(){ 仅仅等DOM树加载完毕后就会执行 })
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="【一】express-搭建服务器"><a href="#【一】express-搭建服务器" class="headerlink" title="【一】express 搭建服务器"></a>【一】express 搭建服务器</h4>
+        <h4 id="【一】NodeJS-常用命令"><a href="#【一】NodeJS-常用命令" class="headerlink" title="【一】NodeJS 常用命令"></a>【一】NodeJS 常用命令</h4><pre><code>node -v
+    查看 node版本
+node 文件名
+    运行文件
+cls
+    清屏
+</code></pre>
         
           <a class="article-more-a" href="/2019/02/07/nodeJS/#more">more >></a>
         
@@ -418,7 +495,13 @@ $(function(){ 仅仅等DOM树加载完毕后就会执行 })
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一 javascript<br>1 组成部分 - ECMAScript 核心语法 - BOM 浏览器对象模型 - DOM 文档对象模型</p>
+        <h4 id="一-javascript"><a href="#一-javascript" class="headerlink" title="一 javascript"></a>一 javascript</h4><pre><code>1 组成部分 - ECMAScript 核心语法 - BOM 浏览器对象模型 - DOM 文档对象模型
+    API： 接口
+    webAPI： 浏览器暴露出的 BOM 和 DOM 两个工具库
+    BOM 和 DOM 的关系
+      DOM 其实是属于 BOM 的一部分。DOM 比重大并且重要
+      DOM 要学什么 - 获取元素 - 操作元素的属性或调用方法 - 事件 - 动态操作元素
+</code></pre>
         
           <a class="article-more-a" href="/2019/02/07/webAPI/#more">more >></a>
         
@@ -483,11 +566,9 @@ $(function(){ 仅仅等DOM树加载完毕后就会执行 })
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1 对象</p>
-<ol>
-<li>什么是对象<br>对象是由属性(静态特征)和方法(动态特征 一般表示功能 用函数表示)组成的</li>
-<li>如何创建对象</li>
-</ol>
+        <h4 id="1-对象"><a href="#1-对象" class="headerlink" title="1 对象"></a>1 对象</h4><pre><code>1) 什么是对象
+    对象是由属性(静态特征)和方法(动态特征 一般表示功能 用函数表示)组成的
+</code></pre>
         
           <a class="article-more-a" href="/2019/02/07/js2/#more">more >></a>
         

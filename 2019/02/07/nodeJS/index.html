@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://AdayXi.github.io">
   <title>nodeJS | atx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="【一】express 搭建服务器">
+  <meta name="description" content="【一】NodeJS 常用命令node -v     查看 node版本 node 文件名     运行文件 cls     清屏">
 <meta name="keywords" content="node.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nodeJS">
 <meta property="og:url" content="https://AdayXi.github.io/2019/02/07/nodeJS/index.html">
 <meta property="og:site_name" content="atx">
-<meta property="og:description" content="【一】express 搭建服务器">
+<meta property="og:description" content="【一】NodeJS 常用命令node -v     查看 node版本 node 文件名     运行文件 cls     清屏">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-08T10:09:57.914Z">
+<meta property="og:updated_time" content="2019-02-12T01:32:24.328Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nodeJS">
-<meta name="twitter:description" content="【一】express 搭建服务器">
+<meta name="twitter:description" content="【一】NodeJS 常用命令node -v     查看 node版本 node 文件名     运行文件 cls     清屏">
   
     <link rel="alternative" href="/atom.xml" title="atx" type="application/atom+xml">
   
@@ -175,8 +175,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="【一】express-搭建服务器"><a href="#【一】express-搭建服务器" class="headerlink" title="【一】express 搭建服务器"></a>【一】express 搭建服务器</h4><a id="more"></a>
-<pre><code>1 步骤
+        <h4 id="【一】NodeJS-常用命令"><a href="#【一】NodeJS-常用命令" class="headerlink" title="【一】NodeJS 常用命令"></a>【一】NodeJS 常用命令</h4><pre><code>node -v
+    查看 node版本
+node 文件名
+    运行文件
+cls
+    清屏
+</code></pre><a id="more"></a>
+<pre><code>cd ..
+    进入上一级目录
+cd 目录名
+    进入该目录下
+</code></pre><h4 id="【二】express-搭建服务器"><a href="#【二】express-搭建服务器" class="headerlink" title="【二】express 搭建服务器"></a>【二】express 搭建服务器</h4><pre><code>1 步骤
     0 npm i express 下载 express 模块
     1 const express = require(&apos;express&apos;)  加载 express 模块
     2 const app = express()    创建express服务器
@@ -219,16 +229,6 @@
     1 const bodyParser = require(&apos;body-parser&apos;) 加载模块
     2 app.use(bp.urlencoded({extended:false})) 注册为中间件
     req.body 监听获取表单数据
-</code></pre><h4 id="【二】NodeJS-常用命令"><a href="#【二】NodeJS-常用命令" class="headerlink" title="【二】NodeJS 常用命令"></a>【二】NodeJS 常用命令</h4><pre><code>node -v
-    查看 node版本
-node 文件名
-    运行文件
-cls
-    清屏
-cd ..
-    进入上一级目录
-cd 目录名
-    进入该目录下
 </code></pre><h4 id="【四】-系统模块"><a href="#【四】-系统模块" class="headerlink" title="【四】 系统模块"></a>【四】 系统模块</h4><pre><code>1 require 加载模块
 例：const os = require(&apos;os&apos;)
   加载 os 模块
@@ -512,7 +512,7 @@ ajax跨域请求
         清除
             req.session.destroy() 需要send发送一下
                 res.send(&apos;清除session&apos;)
-</code></pre><h4 id="【九】扩展模块"><a href="#【九】扩展模块" class="headerlink" title="【九】扩展模块"></a>【九】扩展模块</h4><pre><code>moment 时间模块
+</code></pre><h4 id="【九】扩展模块时间模块"><a href="#【九】扩展模块时间模块" class="headerlink" title="【九】扩展模块时间模块"></a>【九】扩展模块时间模块</h4><pre><code>moment 时间模块
     moment().format(&apos;YYYY-MM-DD HH:mm:ss&apos;)
         将当前时间转为 所需的字符串格式
     moment(3600000).format(&apos;YYYY-MM-DD HH:mm:ss&apos;)
@@ -670,7 +670,7 @@ ajax跨域请求
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#【一】express-搭建服务器"><span class="toc-number">1.</span> <span class="toc-text">【一】express 搭建服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【二】NodeJS-常用命令"><span class="toc-number">2.</span> <span class="toc-text">【二】NodeJS 常用命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【四】-系统模块"><span class="toc-number">3.</span> <span class="toc-text">【四】 系统模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【五】npm-第三方包"><span class="toc-number">4.</span> <span class="toc-text">【五】npm 第三方包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【六】第三方模块"><span class="toc-number">5.</span> <span class="toc-text">【六】第三方模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【七】node-中的模块化"><span class="toc-number">6.</span> <span class="toc-text">【七】node 中的模块化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【八】路由"><span class="toc-number">7.</span> <span class="toc-text">【八】路由</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【九】扩展模块"><span class="toc-number">8.</span> <span class="toc-text">【九】扩展模块</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#【一】NodeJS-常用命令"><span class="toc-number">1.</span> <span class="toc-text">【一】NodeJS 常用命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【二】express-搭建服务器"><span class="toc-number">2.</span> <span class="toc-text">【二】express 搭建服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【四】-系统模块"><span class="toc-number">3.</span> <span class="toc-text">【四】 系统模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【五】npm-第三方包"><span class="toc-number">4.</span> <span class="toc-text">【五】npm 第三方包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【六】第三方模块"><span class="toc-number">5.</span> <span class="toc-text">【六】第三方模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【七】node-中的模块化"><span class="toc-number">6.</span> <span class="toc-text">【七】node 中的模块化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【八】路由"><span class="toc-number">7.</span> <span class="toc-text">【八】路由</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#【九】扩展模块时间模块"><span class="toc-number">8.</span> <span class="toc-text">【九】扩展模块时间模块</span></a></li></ol>
                     </div>
                 </span>
             </div>

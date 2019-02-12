@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://AdayXi.github.io">
   <title>Ajax | atx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="【一】Ajax 同步异步单线程和多线程js 是单线程的语言从 h5 时代开始引入多线程概念, 但是还是由主线程进行控制并进行核心操作同步任务和异步任务同步：按照顺序一个一个执行, 如果某个任务耗时, 后续任务等待异步：某些任务较为耗时或执行时间不确定, 就会成为异步任务结构常见的异步任务：定时器, 事件, Ajax,异步特点：执行时机一定晚于同步任务">
+  <meta name="description" content="【一】Ajax 同步异步  单线程和多线程     js 是单线程的语言     从 h5 时代开始引入多线程概念, 但是还是由主线程进行控制并进行核心操作 同步任务和异步任务     同步：按照顺序一个一个执行, 如果某个任务耗时, 后续任务等待     异步：某些任务较为耗时或执行时间不确定, 就会成为异步任务结构     常见的异步任务：定时器, 事件, Ajax,     异步特点：执行时">
 <meta name="keywords" content="Ajax">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ajax">
 <meta property="og:url" content="https://AdayXi.github.io/2019/02/09/Ajax/index.html">
 <meta property="og:site_name" content="atx">
-<meta property="og:description" content="【一】Ajax 同步异步单线程和多线程js 是单线程的语言从 h5 时代开始引入多线程概念, 但是还是由主线程进行控制并进行核心操作同步任务和异步任务同步：按照顺序一个一个执行, 如果某个任务耗时, 后续任务等待异步：某些任务较为耗时或执行时间不确定, 就会成为异步任务结构常见的异步任务：定时器, 事件, Ajax,异步特点：执行时机一定晚于同步任务">
+<meta property="og:description" content="【一】Ajax 同步异步  单线程和多线程     js 是单线程的语言     从 h5 时代开始引入多线程概念, 但是还是由主线程进行控制并进行核心操作 同步任务和异步任务     同步：按照顺序一个一个执行, 如果某个任务耗时, 后续任务等待     异步：某些任务较为耗时或执行时间不确定, 就会成为异步任务结构     常见的异步任务：定时器, 事件, Ajax,     异步特点：执行时">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-09T13:34:37.023Z">
+<meta property="og:updated_time" content="2019-02-12T01:02:41.096Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ajax">
-<meta name="twitter:description" content="【一】Ajax 同步异步单线程和多线程js 是单线程的语言从 h5 时代开始引入多线程概念, 但是还是由主线程进行控制并进行核心操作同步任务和异步任务同步：按照顺序一个一个执行, 如果某个任务耗时, 后续任务等待异步：某些任务较为耗时或执行时间不确定, 就会成为异步任务结构常见的异步任务：定时器, 事件, Ajax,异步特点：执行时机一定晚于同步任务">
+<meta name="twitter:description" content="【一】Ajax 同步异步  单线程和多线程     js 是单线程的语言     从 h5 时代开始引入多线程概念, 但是还是由主线程进行控制并进行核心操作 同步任务和异步任务     同步：按照顺序一个一个执行, 如果某个任务耗时, 后续任务等待     异步：某些任务较为耗时或执行时间不确定, 就会成为异步任务结构     常见的异步任务：定时器, 事件, Ajax,     异步特点：执行时">
   
     <link rel="alternative" href="/atom.xml" title="atx" type="application/atom+xml">
   
@@ -176,9 +176,17 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="【一】Ajax"><a href="#【一】Ajax" class="headerlink" title="【一】Ajax"></a>【一】Ajax</h4><blockquote>
-<p>同步异步<br>单线程和多线程<br>js 是单线程的语言<br>从 h5 时代开始引入多线程概念, 但是还是由主线程进行控制并进行核心操作<br>同步任务和异步任务<br>同步：按照顺序一个一个执行, 如果某个任务耗时, 后续任务等待<br>异步：某些任务较为耗时或执行时间不确定, 就会成为异步任务结构<br>常见的异步任务：定时器, 事件, Ajax,<br>异步特点：执行时机一定晚于同步任务</p>
+<p>同步异步</p>
 </blockquote>
-<a id="more"></a>
+<pre><code>单线程和多线程
+    js 是单线程的语言
+    从 h5 时代开始引入多线程概念, 但是还是由主线程进行控制并进行核心操作
+同步任务和异步任务
+    同步：按照顺序一个一个执行, 如果某个任务耗时, 后续任务等待
+    异步：某些任务较为耗时或执行时间不确定, 就会成为异步任务结构
+    常见的异步任务：定时器, 事件, Ajax,
+    异步特点：执行时机一定晚于同步任务
+</code></pre><a id="more"></a>
 <h4 id="【二】Ajax-基本操作之发送请求"><a href="#【二】Ajax-基本操作之发送请求" class="headerlink" title="【二】Ajax 基本操作之发送请求"></a>【二】Ajax 基本操作之发送请求</h4><pre><code>在js中是使用内置对象实现的, 构造函数名称为 XMLHttpRequest()
 1, 创建ajax实例 var xhr = new XMLHttpRequest()
 2, 调用open方法, 建立与服务的连接
@@ -570,6 +578,15 @@ onerror事件
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/02/12/vue/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          vue
+        
+      </div>
+    </a>
   
   
     <a href="/2019/02/07/jQuery/" id="article-nav-older" class="article-nav-link-wrap">
