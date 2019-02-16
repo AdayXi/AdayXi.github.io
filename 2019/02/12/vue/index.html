@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="atx">
 <meta property="og:description" content="混合开发和前后端分离 混合开发(服务器端渲染)前后端分离 -后端提供接口，前端开发界面效果(专注于用户的交互)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-12T03:22:31.611Z">
+<meta property="og:updated_time" content="2019-02-16T13:16:00.492Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue基础概念">
 <meta name="twitter:description" content="混合开发和前后端分离 混合开发(服务器端渲染)前后端分离 -后端提供接口，前端开发界面效果(专注于用户的交互)">
@@ -179,7 +179,9 @@
 <p>混合开发(服务器端渲染)<br>前后端分离 -后端提供接口，前端开发界面效果(专注于用户的交互)</p>
 </blockquote>
 <a id="more"></a>
-<h4 id="什么是-Vue"><a href="#什么是-Vue" class="headerlink" title="什么是 Vue"></a>什么是 Vue</h4><pre><code>1 一款非常优秀的前端 JavaScript 框架，由尤雨溪创建开发
+<h4 id="推荐一个有关-vue-全家桶的网站"><a href="#推荐一个有关-vue-全家桶的网站" class="headerlink" title="推荐一个有关 vue 全家桶的网站"></a>推荐一个有关 vue 全家桶的网站</h4><pre><code>vue的全家桶 (Vue + Vue-router + Vuex + axios)
+http://doc.liangxinghua.com/vue-family/1.html
+</code></pre><h4 id="什么是-Vue"><a href="#什么是-Vue" class="headerlink" title="什么是 Vue"></a>什么是 Vue</h4><pre><code>1 一款非常优秀的前端 JavaScript 框架，由尤雨溪创建开发
 2 可以轻松构建单页 (SPA) 应用程序
 3 通过 指令 扩展了 HTML，通过 表达式 绑定数据到 HTML
 4 最大程度上解放了 DOM 操作
@@ -227,16 +229,19 @@ Vue.js 是一个 MVVM 的框架
 
 一 父组件给子组件传参
     可以通过 v-bind 来将传递动态参数
-    步骤
+      两步
+        1 父元素准备一个数据，通过自定义属性给子组件赋值，进行传递
+        2 在子组件中通过 props 属性来接受参数
+    具体步骤
       1 在父组件中的 data 属性中定义数据
           new Vue({
             data: {
               index: 2000
             }
           })
-      2 传递给子组件
+      2 通过自定义属性传递给子组件
           &lt;count-com v-bind:num=&quot;index&quot;&gt;&lt;/count-com&gt;
-      3 在子组件中接收
+      3 在子组件中通过props接收
           Vue.component(&apos;countCom&apos;, {
             template: `&lt;div&gt;
               &lt;span&gt;这里显示数字&lt;/span&gt;&lt;br/&gt;
@@ -247,8 +252,144 @@ Vue.js 是一个 MVVM 的框架
           template: `&lt;div&gt;
             &lt;span&gt;{{ num }}&lt;/span&gt;&lt;br/&gt;
           &lt;/div&gt;`,
+
 二 子组件传参给父组件
-</code></pre><h4 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h4>
+    两步
+      1 在子元素中c准备一个数据，通过 this.$emit(&apos;自定义事件&apos;， &apos;参数&apos;) ，进行传递
+          this.$emit 相当于原理执行子组件的自定义事件, 并且传入参数
+      2 在父组件中给子组件注册自定义事件，并且实现这个方法，就可以得到这个事件了
+          &lt;son @自定义事件=&apos;getval&apos;
+            getval 方法中的第一个参数为子组件传递过来的数据
+    具体步骤
+      1. 在子组件中准备数据
+      2. 给传参按钮绑定事件
+      3. 在事件中调用 this.$emit 方法传递参数
+          Vue.component(&apos;countCom&apos;, {
+              template: `&lt;div&gt;
+                  &lt;span&gt;{{ msg }}&lt;/span&gt;&lt;br/&gt;
+                  &lt;button @click=&quot;passMsg&quot;&gt;点击向父组件传参：msg&lt;/button&gt;
+              &lt;/div&gt;`,
+              data: function(){
+                  return {
+                      msg: &apos;我是子组件中的内容&apos;
+                  }
+              },
+              methods: {
+                  passMsg: function() {
+                      // 将来点击这个按钮需要传参给父组件
+                      // $emit 可以将参数传递给父元素，
+                      //  结构： $emit(函数名， 要传递的值)
+                      // 这个方法会调用父元素中的 msgFn 方法，并且将 msg 属性作为 实参
+                      console.log(&apos;passMsg&apos;);
+                      this.$emit(&apos;msg-fn&apos;, this.msg);
+                  }
+              }
+          });
+      4. 在子组件的标签中使用这个方法
+          &lt;count-com @msg-fn=&quot;getMsg&quot;&gt;&lt;/count-com&gt;
+      5. 在父组件中实现方法，接收参数
+          new Vue({
+              el: &apos;#app&apos;,
+              methods: {
+                  getMsg(value) {
+                      console.log(value);
+                  }
+              }
+          })
+
+    注意点
+      - this.$emit(fnName, params)
+        - 它会给子元素自定义一个方法
+        - 这个方法需要子元素的标签中使用，在父元素中实现
+        - 这个方法名命名需要以 - 来连接多个单词
+</code></pre><h4 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h4><pre><code>单页面应用（SPA）的特点
+        - 所有的业务功能在一个页面中完成
+    优点：
+      - 操作体验流畅
+      - 完全的前端组件化
+    缺点
+      - 首次加载大量资源
+      - 对搜索引擎SEO不友好
+      - 开发难度相对较高
+
+单页面应用的实现原理
+    利用 url 上的 hash 值
+        - 改变 hash 时，页面不会刷新
+        - 可以触发相应 hashchange 回调函数
+
+vue官方路由库-vue-router
+    1 引入 vue-router 文件
+    2 在 html 中设置路由链接
+    3 创建每个路由对应的组件
+    4 创建路由对象
+    5 将路由注册到 vue 实例中
+    6 在 html 中加入组件替换的标签
+
+vueRouter中的动态路由
+    不同的路由可以匹配到同一组件
+    步骤
+        1. 引入 vue-router 文件
+        2. 在 html 中设置路由链接
+              &lt;router-link to=&quot;/index&quot;&gt;首页&lt;/router-link&gt;
+              &lt;router-link to=&quot;/about&quot;&gt;关于&lt;/router-link&gt;
+              &lt;router-link to=&quot;/news/1&quot;&gt;新闻A&lt;/router-link&gt;
+              &lt;router-link to=&quot;/news/2&quot;&gt;新闻B&lt;/router-link&gt;
+        3. 创建每个路由对应的组件
+              var index = {
+                template: &apos;&lt;div&gt;首页&lt;/div&gt;&apos;
+              }
+              var about = {
+                template: &apos;&lt;div&gt;关于&lt;/div&gt;&apos;
+              }
+              var news = {
+                template: &apos;&lt;div&gt;新闻 + {{ $route.params.id }}&lt;/div&gt;&apos;
+              }
+        4. 创建路由对象
+              var router = new VueRouter({
+                routes: [
+                  {name: &apos;AAA&apos;, path: &apos;/index&apos;, component: index},
+                  {name: &apos;BBB&apos;, path: &apos;/about&apos;, component: about},
+                  {name: &apos;CCC&apos;, path: &apos;/news/:id&apos;, component: news}
+                ]
+              });
+        5. 将路由注册到 vue 实例中
+              new Vue({
+                el: &apos;#app&apos;,
+                router: router
+              });
+        6. 在 html 中加入组件替换的标签
+              &lt;!-- 将来点击链接后，路由对应的组件会显示在 router-view 标签显示的区域 --&gt;
+              &lt;router-view&gt;&lt;/router-view&gt;
+
+路由-redirect重定向
+    - 方式1：设置跳转路由的 name
+          var router = new VueRouter({
+            routes: [
+              {path: &apos;/&apos;, redirect: { name: &apos;BBB&apos; }},
+              {name: &apos;BBB&apos;, path: &apos;/about&apos;, component: about},
+            ]
+          });
+    - 方式2：- 设置跳转路由的 path
+          var router = new VueRouter({
+            routes: [
+              {path: &apos;/&apos;, redirect: { paht: &apos;about&apos; }},
+              {name: &apos;BBB&apos;, path: &apos;/about&apos;, component: about},
+            ]
+          });
+    - 应用：可以用来统一处理不存在的路由
+
+路由-编程式导航
+    导航分类
+      1 链接式导航
+        - router-link
+      2 编程式导航
+        - this.$router.push()
+
+路由-激活样式
+    当路由链接被点击时会被加上类名
+      1 可以 通过修改 active-class 属性改变 自动生成的类名
+      2 可以修改 router-link 的 tag 属性来改变 router-link 生成的结构
+</code></pre>
       
 
       
@@ -392,7 +533,7 @@ Vue.js 是一个 MVVM 的框架
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#混合开发和前后端分离"><span class="toc-number">1.</span> <span class="toc-text">混合开发和前后端分离</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是-Vue"><span class="toc-number">2.</span> <span class="toc-text">什么是 Vue</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Vue-的特点"><span class="toc-number">3.</span> <span class="toc-text">Vue 的特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#学习-vue-的好处"><span class="toc-number">4.</span> <span class="toc-text">学习 vue 的好处</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Vue-js-的三种安装方式"><span class="toc-number">5.</span> <span class="toc-text">Vue.js 的三种安装方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用-ref-操作-dom-元素"><span class="toc-number">6.</span> <span class="toc-text">使用 ref 操作 dom 元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#组件以及传参"><span class="toc-number">7.</span> <span class="toc-text">组件以及传参</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#路由"><span class="toc-number">8.</span> <span class="toc-text">路由</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#混合开发和前后端分离"><span class="toc-number">1.</span> <span class="toc-text">混合开发和前后端分离</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#推荐一个有关-vue-全家桶的网站"><span class="toc-number">2.</span> <span class="toc-text">推荐一个有关 vue 全家桶的网站</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是-Vue"><span class="toc-number">3.</span> <span class="toc-text">什么是 Vue</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Vue-的特点"><span class="toc-number">4.</span> <span class="toc-text">Vue 的特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#学习-vue-的好处"><span class="toc-number">5.</span> <span class="toc-text">学习 vue 的好处</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Vue-js-的三种安装方式"><span class="toc-number">6.</span> <span class="toc-text">Vue.js 的三种安装方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用-ref-操作-dom-元素"><span class="toc-number">7.</span> <span class="toc-text">使用 ref 操作 dom 元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#组件以及传参"><span class="toc-number">8.</span> <span class="toc-text">组件以及传参</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#路由"><span class="toc-number">9.</span> <span class="toc-text">路由</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -504,15 +645,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Ajax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
             
             <div class="clearfix"></div>
