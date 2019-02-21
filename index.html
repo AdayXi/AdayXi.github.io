@@ -178,101 +178,10 @@
     import Vue from &apos;vue&apos;;
     import Vuex from &apos;vuex&apos;;
     Vue.use(Vuex); //加载为中间件
-2 使用
-    const store = new Vuex.Store({
-        // 用来管理状态
-        state: {
-            num: 1
-        },
-        // 用来修改状态，在mutations 中所有的方法中都有一个默认的参数 state 就是 state 状态
-        mutations: {
-            add(state) {
-                state.num++
-            }
-        },
-        // 有一个默认参数 context
-        actions: {
-
-        }
-    });
-    // 把 store 交给 vue 实例
-    new Vue({
-        el: &apos;#app&apos;,
-        router,
-        store,
-        components: {App},
-        template: &apos;&lt;App/&gt;&apos;
-    })
-3 使用 state 状态数据 state
-    方式一：this.$store.state.num
-    方式二：使用 mapSate 辅助函数来讲述性进行映射    缺点: 完全占用计算属性
-        1 导入辅助函数对象
-            import { mapSate } from &apos;vuex&apos;
-        2 compute: mapState({
-            num: function(state){
-                return state.num
-            },
-            name：state =&gt; state.name
-          })
-    方式三 : 使用 mapSate 展开运算符进行映射(传入的是对象)
-        compute:{
-            mycom: () =&gt; &apos;mycom&apos;,
-            ...mapSate({
-                num: state =&gt; state.num,
-                name: state =&gt; state.name
-            })
-        }
-    方式四 : 使用 mapSate 展开运算符进行映射(传入的是数组),不能改别名
-        compute:{
-            mycom: () =&gt; &apos;mycom&apos;,
-            ...mapSate([
-                &apos;num&apos;,
-                &apos;name&apos;
-            ])
-        }
-4 mutations 修改状态 commit
-    调用 mutations 中的方法
-        方式一： this.$tore.commit(&apos;add&apos;) // 使用 commit 调用 mutations 中的方法 add
-            mutation 中的方法参数
-                方式一
-                    this.$tore.commit(&apos;add&apos;, { index: 22 })
-                方式二
-                    this.$tore.commit({
-                        type: &apos;add&apos;,
-                        index: 22
-                    })
-                    type为 mutations 中的方法
-        方式二：
-            mapMutations 辅助函数进行映射
-                ...mapMutations({
-                add: &apos;add&apos;
-                })
-5 Actions 操作 mutations 的
-    actions 类似于 mutations
-        不同点在于
-            可以书写逻辑代码，但是它得到的结果只能交给mutations
-            它可以执行任意异步操作 这是重点
-    调用 actions 中的方法
-        方式一 通过 this.$store.dispatch(&apos;add&apos;) 来接受 actions 中的方法
-        方式二 通过 mapAction 辅助函数展开将方法进行映射
-    action 中的所有方法都有一个默认参数 context
-</code></pre><h4 id="4-axios-请求-jsonp-跨域"><a href="#4-axios-请求-jsonp-跨域" class="headerlink" title="4 axios 请求 jsonp 跨域"></a>4 axios 请求 jsonp 跨域</h4><pre><code>1) 不能使用axios 因为不支持跨域 使用jsonp第三方包
-2) 下载 jsonp 第三方包
-    npm i jsonp -S
-3) 请求接口
-    import jsonp from &apos;jsonp&apos;
-    jsonp(&apos;url&apos;,null,(err,data)=&gt;{})
-</code></pre><h4 id="3-js-cookie"><a href="#3-js-cookie" class="headerlink" title="3 js-cookie"></a>3 js-cookie</h4><pre><code>1 安装
-    cnpm i js-cookie
-2 用法
-    import Cookies from &apos;js-cookie&apos;;
-    //set
-    Cookies.set(&apos;CardNo&apos;, cardNo, {expires: 7});//cookie保存7天
-    //get
-    let CardNo = Cookies.get(&quot;CardNo&quot;);
-    //remove
-    Cookies.remove(&apos;HMcart&apos;);
-</code></pre><h4 id="4-process-env-NODE-ENV-配置"><a href="#4-process-env-NODE-ENV-配置" class="headerlink" title="4 process.env.NODE_ENV 配置"></a>4 process.env.NODE_ENV 配置</h4>
+</code></pre>
+        
+          <a class="article-more-a" href="/2019/02/21/vue项目总结/#more">more >></a>
+        
       
 
       
@@ -1040,15 +949,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Ajax</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
             
             <div class="clearfix"></div>
