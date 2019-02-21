@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://AdayXi.github.io">
-  <title>Archives: 2019/2 | atx</title>
+  <title>vue项目总结 | atx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="atx">
-<meta property="og:url" content="https://AdayXi.github.io/archives/2019/02/index.html">
+  <meta name="description" content="1 vuex0 安装     npm i vuex -S 1 引入     import Vue from &amp;apos;vue&amp;apos;;     import Vuex from &amp;apos;vuex&amp;apos;;     Vue.use(Vuex); //加载为中间件 2 使用     const store = new Vuex.Store({         // 用来管理状态">
+<meta name="keywords" content="vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue项目总结">
+<meta property="og:url" content="https://AdayXi.github.io/2019/02/21/vue项目总结/index.html">
 <meta property="og:site_name" content="atx">
+<meta property="og:description" content="1 vuex0 安装     npm i vuex -S 1 引入     import Vue from &amp;apos;vue&amp;apos;;     import Vuex from &amp;apos;vuex&amp;apos;;     Vue.use(Vuex); //加载为中间件 2 使用     const store = new Vuex.Store({         // 用来管理状态">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-21T10:22:22.240Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="atx">
+<meta name="twitter:title" content="vue项目总结">
+<meta name="twitter:description" content="1 vuex0 安装     npm i vuex -S 1 引入     import Vue from &amp;apos;vue&amp;apos;;     import Vuex from &amp;apos;vuex&amp;apos;;     Vue.use(Vuex); //加载为中间件 2 使用     const store = new Vuex.Store({         // 用来管理状态">
   
     <link rel="alternative" href="/atom.xml" title="atx" type="application/atom+xml">
   
@@ -150,36 +155,155 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-vue项目总结" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      vue项目总结
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/21/vue项目总结/" class="archive-article-date">
+
+        
+        <a href="/2019/02/21/vue项目总结/" class="archive-article-date">
   	<time datetime="2019-02-21T06:03:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-21</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/21/vue项目总结/">vue项目总结</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-vuex"><a href="#1-vuex" class="headerlink" title="1 vuex"></a>1 vuex</h4><pre><code>0 安装
+    npm i vuex -S
+1 引入
+    import Vue from &apos;vue&apos;;
+    import Vuex from &apos;vuex&apos;;
+    Vue.use(Vuex); //加载为中间件
+2 使用
+    const store = new Vuex.Store({
+        // 用来管理状态
+        state: {
+            num: 1
+        },
+        // 用来修改状态，在mutations 中所有的方法中都有一个默认的参数 state 就是 state 状态
+        mutations: {
+            add(state) {
+                state.num++
+            }
+        },
+        // 有一个默认参数 context
+        actions: {
 
-        <div class="article-info info-on-right">
-          
+        }
+    });
+    // 把 store 交给 vue 实例
+    new Vue({
+        el: &apos;#app&apos;,
+        router,
+        store,
+        components: {App},
+        template: &apos;&lt;App/&gt;&apos;
+    })
+3 使用 state 状态数据 state
+    方式一：this.$store.state.num
+    方式二：使用 mapSate 辅助函数来讲述性进行映射    缺点: 完全占用计算属性
+        1 导入辅助函数对象
+            import { mapSate } from &apos;vuex&apos;
+        2 compute: mapState({
+            num: function(state){
+                return state.num
+            },
+            name：state =&gt; state.name
+          })
+    方式三 : 使用 mapSate 展开运算符进行映射(传入的是对象)
+        compute:{
+            mycom: () =&gt; &apos;mycom&apos;,
+            ...mapSate({
+                num: state =&gt; state.num,
+                name: state =&gt; state.name
+            })
+        }
+    方式四 : 使用 mapSate 展开运算符进行映射(传入的是数组),不能改别名
+        compute:{
+            mycom: () =&gt; &apos;mycom&apos;,
+            ...mapSate([
+                &apos;num&apos;,
+                &apos;name&apos;
+            ])
+        }
+4 mutations 修改状态 commit
+    调用 mutations 中的方法
+        方式一： this.$tore.commit(&apos;add&apos;) // 使用 commit 调用 mutations 中的方法 add
+            mutation 中的方法参数
+                方式一
+                    this.$tore.commit(&apos;add&apos;, { index: 22 })
+                方式二
+                    this.$tore.commit({
+                        type: &apos;add&apos;,
+                        index: 22
+                    })
+                    type为 mutations 中的方法
+        方式二：
+            mapMutations 辅助函数进行映射
+                ...mapMutations({
+                add: &apos;add&apos;
+                })
+5 Actions 操作 mutations 的
+    actions 类似于 mutations
+        不同点在于
+            可以书写逻辑代码，但是它得到的结果只能交给mutations
+            它可以执行任意异步操作 这是重点
+    调用 actions 中的方法
+        方式一 通过 this.$store.dispatch(&apos;add&apos;) 来接受 actions 中的方法
+        方式二 通过 mapAction 辅助函数展开将方法进行映射
+    action 中的所有方法都有一个默认参数 context
+</code></pre><h4 id="4-axios-请求-jsonp-跨域"><a href="#4-axios-请求-jsonp-跨域" class="headerlink" title="4 axios 请求 jsonp 跨域"></a>4 axios 请求 jsonp 跨域</h4><pre><code>1) 不能使用axios 因为不支持跨域 使用jsonp第三方包
+2) 下载 jsonp 第三方包
+    npm i jsonp -S
+3) 请求接口
+    import jsonp from &apos;jsonp&apos;
+    jsonp(&apos;url&apos;,null,(err,data)=&gt;{})
+</code></pre><h4 id="3-js-cookie"><a href="#3-js-cookie" class="headerlink" title="3 js-cookie"></a>3 js-cookie</h4><pre><code>1 安装
+    cnpm i js-cookie
+2 用法
+    import Cookies from &apos;js-cookie&apos;;
+    //set
+    Cookies.set(&apos;CardNo&apos;, cardNo, {expires: 7});//cookie保存7天
+    //get
+    let CardNo = Cookies.get(&quot;CardNo&quot;);
+    //remove
+    Cookies.remove(&apos;HMcart&apos;);
+</code></pre><h4 id="4-process-env-NODE-ENV-配置"><a href="#4-process-env-NODE-ENV-配置" class="headerlink" title="4 process.env.NODE_ENV 配置"></a>4 process.env.NODE_ENV 配置</h4>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,301 +315,119 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://AdayXi.github.io/2019/02/21/vue项目总结/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/12/vue/" class="archive-article-date">
-  	<time datetime="2019-02-12T00:51:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-12</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/12/vue/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vue基础概念</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/12/vue/">vue基础概念</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-vuex"><span class="toc-number">1.</span> <span class="toc-text">1 vuex</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-axios-请求-jsonp-跨域"><span class="toc-number">2.</span> <span class="toc-text">4 axios 请求 jsonp 跨域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-js-cookie"><span class="toc-number">3.</span> <span class="toc-text">3 js-cookie</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-process-env-NODE-ENV-配置"><span class="toc-number">4.</span> <span class="toc-text">4 process.env.NODE_ENV 配置</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/09/Ajax/" class="archive-article-date">
-  	<time datetime="2019-02-09T12:32:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/09/Ajax/">Ajax</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Ajax</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/07/jQuery/" class="archive-article-date">
-  	<time datetime="2019-02-07T07:55:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-07</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/07/jQuery/">jQuery</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-posts">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/07/nodeJS/" class="archive-article-date">
-  	<time datetime="2019-02-07T02:25:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/07/nodeJS/">nodeJS</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">node</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/07/webAPI/" class="archive-article-date">
-  	<time datetime="2019-02-06T16:04:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/07/webAPI/">webAPI知识点汇总</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/07/js2/" class="archive-article-date">
-  	<time datetime="2019-02-06T16:03:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/07/js2/">js高级知识点汇总</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/06/js1/" class="archive-article-date">
-  	<time datetime="2019-02-06T15:49:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/06/js1/">js基础知识点汇总</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/03/postName/" class="archive-article-date">
-  	<time datetime="2019-02-03T14:36:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/03/postName/">我的 vscode 插件</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -508,8 +450,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
